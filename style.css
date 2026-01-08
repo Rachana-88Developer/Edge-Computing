@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.carousel {
+    margin-top: 20px;
+}
+
+.carousel img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: none;
+    border-radius: 10px;
+}
+
+.carousel img:first-child {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+}
