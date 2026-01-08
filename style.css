@@ -2,85 +2,75 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
-/* Particle Background */
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
     z-index: -1;
 }
 
-/* Glass Card */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
 .glass-card {
-    width: 90%;
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
     text-align: center;
     color: white;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.glass-card h1 {
-    font-size: 36px;
-}
+h1 { font-size: 2.5rem; letter-spacing: 1px; }
+h2 { font-weight: 300; opacity: 0.9; margin-bottom: 10px; }
+#greetingText { font-size: 1.1rem; margin-bottom: 25px; font-weight: 400; }
 
-.glass-card h2 {
-    font-size: 20px;
-    margin-top: 5px;
-}
-
-#greeting {
-    margin: 15px 0;
-    font-size: 18px;
-}
-
-/* Slider */
-.slider {
+/* Slider Logic */
+.slider-wrapper {
     width: 100%;
     overflow: hidden;
     border-radius: 15px;
-    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .slides {
     display: flex;
-    width: 500%;
-    animation: slide 15s infinite;
+    width: 500%; /* Total images (including clone) * 100% */
+    animation: slideLoop 20s infinite cubic-bezier(0.85, 0, 0.15, 1);
 }
 
 .slides img {
-    width: 100%;
-    border-radius: 15px;
+    width: 20%; /* 100% / 5 images */
+    display: block;
 }
 
-/* Sliding Animation */
-@keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(0); }
-
-    25% { transform: translateX(-100%); }
-    45% { transform: translateX(-100%); }
-
-    50% { transform: translateX(-200%); }
-    70% { transform: translateX(-200%); }
-
-    75% { transform: translateX(-300%); }
-    95% { transform: translateX(-300%); }
-
-    100% { transform: translateX(-400%); }
+@keyframes slideLoop {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(0); }
+    25%  { transform: translateX(-20%); }
+    45%  { transform: translateX(-20%); }
+    50%  { transform: translateX(-40%); }
+    70%  { transform: translateX(-40%); }
+    75%  { transform: translateX(-60%); }
+    95%  { transform: translateX(-60%); }
+    100% { transform: translateX(-80%); }
 }
 
-/* Responsive */
 @media (max-width: 600px) {
-    .glass-card h1 {
-        font-size: 26px;
-    }
+    h1 { font-size: 1.8rem; }
+    .glass-card { padding: 20px; }
 }
