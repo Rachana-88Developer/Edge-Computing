@@ -1,34 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #667eea, #764ba2);
-    margin: 0;
-    padding: 0;
+// Dynamic Greeting
+const greeting = document.getElementById("greeting");
+const hour = new Date().getHours();
+
+if (hour < 12) {
+    greeting.innerText = "Good Morning! Welcome to my website ☀️";
+} else if (hour < 18) {
+    greeting.innerText = "Good Afternoon! Welcome to my website 🌤️";
+} else {
+    greeting.innerText = "Good Evening! Welcome to my website 🌙";
 }
 
-.container {
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-.carousel {
-    margin-top: 20px;
-}
-
-.carousel img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: none;
-    border-radius: 10px;
-}
-
-.carousel img:first-child {
-    display: block;
-}
-
-@media (max-width: 600px) {
-    h1 {
-        font-size: 24px;
+// Particles.js config
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 80 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: {
+            enable: true,
+            speed: 2
+        }
+    },
+    interactivity: {
+        events: {
+            onhover: { enable: true, mode: "repulse" }
+        }
     }
-}
+});
