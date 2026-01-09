@@ -1,49 +1,56 @@
-// 1. Dynamic Greeting
-const greetingElement = document.getElementById("greetingText");
-const hours = new Date().getHours();
+// 1. Dynamic Greeting & Real-Time Clock
+function updateUI() {
+    const now = new Date();
+    
+    // Time Logic
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+    
+    // Add leading zeros
+    h = h < 10 ? '0' + h : h;
+    m = m < 10 ? '0' + m : m;
+    s = s < 10 ? '0' + s : s;
+    
+    document.getElementById('clock').textContent = `${h}:${m}:${s}`;
 
-let message = "";
-if (hours < 12) message = "Good Morning! ☀️";
-else if (hours < 18) message = "Good Afternoon! 🌤️";
-else message = "Good Evening! 🌙";
+    // Greeting Logic (only needs to run once, but fine here)
+    const greetingElement = document.getElementById("greetingText");
+    if (h < 12) greetingElement.innerText = "Good Morning! ☀️";
+    else if (h < 18) greetingElement.innerText = "Good Afternoon! 🌤️";
+    else greetingElement.innerText = "Good Evening! 🌙";
+}
 
-greetingElement.innerText = `${message} Welcome to my project.`;
+// Update clock every second
+setInterval(updateUI, 1000);
+updateUI(); // Initial call
 
-// 2. Particles.js Configuration
+// 2. Particles.js Config
 particlesJS("particles-js", {
     particles: {
-        number: { value: 100, density: { enable: true, value_area: 800 } },
+        number: { value: 80, density: { enable: true, value_area: 800 } },
         color: { value: "#ffffff" },
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
         line_linked: {
             enable: true,
             distance: 150,
             color: "#ffffff",
-            opacity: 0.4,
+            opacity: 0.2,
             width: 1
         },
         move: {
             enable: true,
-            speed: 2,
+            speed: 1.5,
             direction: "none",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
+            out_mode: "out"
         }
     },
     interactivity: {
-        detect_on: "canvas",
         events: {
-            onhover: { enable: true, mode: "grab" },
-            onclick: { enable: true, mode: "push" },
-            resize: true
-        },
-        modes: {
-            grab: { distance: 140, line_linked: { opacity: 1 } }
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
         }
-    },
-    retina_detect: true
+    }
 });
