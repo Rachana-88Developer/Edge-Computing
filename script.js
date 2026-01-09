@@ -1,38 +1,42 @@
-// 1. Dynamic Greeting & Real-Time Clock
+// Function to update Time and Greeting
 function updateUI() {
     const now = new Date();
     
-    // Time Logic
+    // Get hours and minutes
     let h = now.getHours();
     let m = now.getMinutes();
-    let s = now.getSeconds();
     
-    // Add leading zeros
+    // Formatting: add leading zero if needed
     h = h < 10 ? '0' + h : h;
     m = m < 10 ? '0' + m : m;
-    s = s < 10 ? '0' + s : s;
     
-    document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    // Display Time
+    document.getElementById('clock').textContent = `${h}:${m}`;
 
-    // Greeting Logic (only needs to run once, but fine here)
+    // Update Greeting based on time
     const greetingElement = document.getElementById("greetingText");
-    if (h < 12) greetingElement.innerText = "Good Morning! ☀️";
-    else if (h < 18) greetingElement.innerText = "Good Afternoon! 🌤️";
-    else greetingElement.innerText = "Good Evening! 🌙";
+    if (h < 12) {
+        greetingElement.innerText = "Good Morning! ☀️";
+    } else if (h < 18) {
+        greetingElement.innerText = "Good Afternoon! 🌤️";
+    } else {
+        greetingElement.innerText = "Good Evening! 🌙";
+    }
 }
 
-// Update clock every second
-setInterval(updateUI, 1000);
-updateUI(); // Initial call
+// Initial call to set time immediately
+updateUI();
 
-// 2. Particles.js Config
+// Update every 60,000 milliseconds (1 minute)
+setInterval(updateUI, 60000);
+
+// Particles.js Setup
 particlesJS("particles-js", {
     particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { value: 90, density: { enable: true, value_area: 800 } },
         color: { value: "#ffffff" },
-        shape: { type: "circle" },
         opacity: { value: 0.3 },
-        size: { value: 3 },
+        size: { value: 2 },
         line_linked: {
             enable: true,
             distance: 150,
@@ -40,17 +44,9 @@ particlesJS("particles-js", {
             opacity: 0.2,
             width: 1
         },
-        move: {
-            enable: true,
-            speed: 1.5,
-            direction: "none",
-            out_mode: "out"
-        }
+        move: { enable: true, speed: 1 }
     },
     interactivity: {
-        events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" }
-        }
+        events: { onhover: { enable: true, mode: "grab" } }
     }
 });
