@@ -2,14 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Background & Centering */
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #000000);
     z-index: -1;
 }
 
@@ -21,56 +22,68 @@
     padding: 20px;
 }
 
+/* Glassmorphism Card */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
+    border-radius: 30px;
     padding: 40px;
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     text-align: center;
     color: white;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-h1 { font-size: 2.5rem; letter-spacing: 1px; }
-h2 { font-weight: 300; opacity: 0.9; margin-bottom: 10px; }
-#greetingText { font-size: 1.1rem; margin-bottom: 25px; font-weight: 400; }
+h1 { font-size: 2.2rem; margin-bottom: 5px; }
+.prn-text { font-size: 1.1rem; opacity: 0.8; margin-bottom: 15px; }
 
-/* Slider Logic */
+/* Digital Clock Styling */
+#clock {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 10px 0;
+    color: #00d4ff;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+}
+
+#greetingText {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Sliding Window Carousel */
 .slider-wrapper {
     width: 100%;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .slides {
     display: flex;
-    width: 500%; /* Total images (including clone) * 100% */
-    animation: slideLoop 20s infinite cubic-bezier(0.85, 0, 0.15, 1);
+    width: 500%; /* 5 images * 100% */
+    animation: slideLoop 16s infinite cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .slides img {
-    width: 20%; /* 100% / 5 images */
+    width: 20%; /* Each image takes 1/5th of the total width */
     display: block;
 }
 
+/* 4 Images + 1 Clone Logic */
 @keyframes slideLoop {
-    0%   { transform: translateX(0); }
-    20%  { transform: translateX(0); }
-    25%  { transform: translateX(-20%); }
-    45%  { transform: translateX(-20%); }
-    50%  { transform: translateX(-40%); }
-    70%  { transform: translateX(-40%); }
-    75%  { transform: translateX(-60%); }
-    95%  { transform: translateX(-60%); }
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-20%); }
+    50%, 70% { transform: translateX(-40%); }
+    75%, 95% { transform: translateX(-60%); }
     100% { transform: translateX(-80%); }
 }
 
-@media (max-width: 600px) {
-    h1 { font-size: 1.8rem; }
-    .glass-card { padding: 20px; }
+/* Responsive adjust */
+@media (max-width: 500px) {
+    #clock { font-size: 2rem; }
+    h1 { font-size: 1.6rem; }
 }
